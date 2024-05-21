@@ -22,6 +22,16 @@ class Model {
 		}
 	}
 
+	public function executeRequest(string $requete, array $params = []) {
+        try {
+            $stmt = self::$db->prepare($requete);
+            $stmt->execute($params);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
+
 
 	// === Il faut coder ici ===
 }
