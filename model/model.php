@@ -39,6 +39,8 @@ class Model {
 		}
 	}
 
+    
+
 	/**
 	 * Get all books from the database.
 	 *
@@ -71,6 +73,12 @@ class Model {
 		$params = ['name' => '%' . $nom . '%'];
 		return $this->executeRequest($requete, $params);
 	}
+
+    /**
+     * Get for book by categories.
+     *
+     * @return array The list of authors.
+     */
 
 
 	// === Il faut coder ici ===
