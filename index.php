@@ -20,16 +20,17 @@ if(isset($_GET['action'])) {
 		// 	$controller->render();
 		// 	break;
 
+		case 'home':
+			$controller = new HomeController();
+			$controller->render();
+			break;
+			
+
 		case 'register':
 			$controller = new RegisterController();
 			$controller->render();
 			break;
 
-		case 'search_book':
-			$controller = new SearchController();
-			$controller->render();
-			break;
-			
 		default:
 			header('Location: ./');
 			break;

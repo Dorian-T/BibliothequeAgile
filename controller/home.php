@@ -14,8 +14,12 @@ class HomeController extends Controller {
 	 * Renders the home page.
 	 */
 	public function render() {
-		$books = $this->model->getAllBooks();
-
+		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+			$title = isset($_POST['book_name']) ? $_POST['book_name'] : '';
+			$books = $this->model->searchBookByName($title);
+		} else {
+			$books = $this->model->getAllBooks();
+		}
 		require_once 'view/home.php';
 	}
 }
