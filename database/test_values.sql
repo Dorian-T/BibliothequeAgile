@@ -14,7 +14,7 @@ INSERT INTO Customer(id, first_name, last_name, birth_date, phone, email, passwo
     (2, 'Jeanne', 'Martin', '1995-02-02', 1234567890, 'jeannemartin@mail.com', 'JMpwd+1995', 1)
 ;
 
-INSERT INTO Book(id, title, author, editor, publishing_date, category, shelf, borrowed_by) VALUES
+INSERT INTO Book(id, title, author, edition, publishing_year, genre, location, borrowed_by) VALUES
     (1, 'Veiller sur elle', 'Jean-Baptiste Andrea', 'L''iconoclaste', 2023, 1, 'A1', NULL),
     (2, 'Des diables et des saints', 'Jean-Baptiste Andrea', 'Collection poche', 2022, 1, 'A1', NULL),
     (3, 'Psychopompe', 'Amelie Nothomb', 'Albin Michel', 2023, 1, 'A1', NULL),
