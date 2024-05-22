@@ -10,7 +10,7 @@ class RegisterController extends Controller {
 
 	// === Methods ===
 
-	public function RegisterController() {
+	public function __construct() {
 		parent::__construct();
 		if (isset($_POST["action"])) {
             if ($_POST["action"] == "registerClient") {

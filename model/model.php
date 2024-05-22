@@ -115,5 +115,23 @@ class Model {
 		$this->executeRequest($requete, $params);
 		return self::$db->lastInsertId();
 	}
+
+	/**
+	 * Search for a client by ID
+	 * 
+	 * @param int $id The id of the client.
+	 * @return array The client that match the id.
+	 */
+
+	public function getClientById($id) {
+		$requete = "SELECT * FROM customer WHERE id = :id";
+		$params = ['id' => $id];
+		return ($this->executeRequest($requete, $params))[0];
+	}
+
+	public function getClients() {
+		$requete = "SELECT * FROM customer";
+		return $this->executeRequest($requete);
+	}
 	
 }
