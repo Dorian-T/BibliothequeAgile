@@ -2,7 +2,7 @@
 
 <main id="search">
 	<h1>Liste des livres</h1>
-	<form action="index.php?action=search_book" method="post">
+	<form action="index.php?action=home" method="post">
         <label for="book_name">Nom du Livre:</label>
         <input type="text" id="book_name" name="book_name" required>
         <button type="submit">Rechercher</button>
