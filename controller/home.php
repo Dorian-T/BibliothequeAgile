@@ -14,7 +14,7 @@ class HomeController extends Controller {
 	 * Renders the home page.
 	 */
 	public function render() {
-		// TODO: Implement some code here
+		$books = $this->model->getAllBooks();
 
 		require_once 'view/home.php';
 	}
