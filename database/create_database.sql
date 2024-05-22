@@ -33,7 +33,7 @@ CREATE TABLE Book(
     title VARCHAR(64) NOT NULL,
     author VARCHAR(128) NOT NULL,
     editor VARCHAR(64) NOT NULL,
-    publishing_date DATE NOT NULL,
+    publishing_date INT NOT NULL,
     category INT NOT NULL,
     shelf VARCHAR(64) NOT NULL,
     borrowed_by INT,
