@@ -1,6 +1,8 @@
 <?php ob_start(); ?>
 
 <main id="home">
+    <label for="pet-select">Choose a pet:</label>
+
 	<h1>Liste des livres</h1>
 	<table>
 		<thead>
