@@ -4,18 +4,17 @@
 
 	<h1>Liste des livres</h1>
 
-	<label for="categorie-select">choisir une catégorie:</label>
 
-	<select name="categorie" id="categorie-select">
-		<option value="">categorie</option>
-		<?php foreach ($categories as $category) : ?>
-			<option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
-		<?php endforeach; ?>
-	</select>
 
 	<form action="index.php?action=home" method="post">
+        <label for="categorie-select">choisir une catégorie:</label>
+        <select name="categorie" id="categorie-select">
+            <?php foreach ($categories as $category) : ?>
+                <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+            <?php endforeach; ?>
+        </select>
         <label for="book_name">Nom du Livre:</label>
-        <input type="text" id="book_name" name="book_name" required>
+        <input type="text" id="book_name" name="book_name">
         <button type="submit">Rechercher</button>
     </form>
 

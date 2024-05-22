@@ -17,6 +17,12 @@ class HomeController extends Controller {
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$title = isset($_POST['book_name']) ? $_POST['book_name'] : '';
 			$books = $this->model->searchBookByName($title);
+			if (empty($books)) {
+				$idCategory = isset($_POST['categorie-select']) ? $_POST['categorie-select'] : '';
+				$books = $this->model->getBooksByCategory($idCategory);
+                $categories=$this->model->getAllCategories();
+			}
+
 		} else {
             $categories=$this->model->getAllCategories();
 			$books = $this->model->getAllBooks();
