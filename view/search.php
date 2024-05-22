@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-<main id="home">
+<main id="search">
 	<h1>Liste des livres</h1>
 	<form action="index.php?action=search_book" method="post">
         <label for="book_name">Nom du Livre:</label>
