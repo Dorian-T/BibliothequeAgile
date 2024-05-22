@@ -36,7 +36,7 @@ CREATE TABLE Book(
     title VARCHAR(64) NOT NULL,
     author VARCHAR(128) NOT NULL,
     edition VARCHAR(64) NOT NULL,
-    publishing_year INT NOT NULL,
+    publication_year INT NOT NULL,
     genre INT NOT NULL,
     location VARCHAR(64) NOT NULL,
     borrowed_by INT,
