@@ -47,7 +47,10 @@ class Model {
 	 * @return array The list of books.
 	 */
 	public function getAllBooks() {
-		$requete = "SELECT * FROM BOOK";
+		$requete = "
+			SELECT B.title, B.author, B.edition, B.publication_year, C.name AS genre, B.location
+			FROM BOOK AS B JOIN CATEGORY AS C ON B.genre = C.id
+		";
 		return $this->executeRequest($requete);
 	}
 
@@ -76,7 +79,7 @@ class Model {
 
     /**
      * Get for book by categories.
-     * 
+     *
      * @param string $id The id of the category.
      * @return array The list of authors.
      */
