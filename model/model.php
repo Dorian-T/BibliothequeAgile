@@ -69,7 +69,7 @@ class Model {
 	 * @return array The list of books that match the name.
 	 */
 	public function searchBookByName(string $nom) {
-		$requete = "SELECT * FROM BOOK WHERE name LIKE :name";
+		$requete = "SELECT * FROM BOOK WHERE title LIKE :name";
 		$params = ['name' => '%' . $nom . '%'];
 		return $this->executeRequest($requete, $params);
 	}
