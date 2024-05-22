@@ -9,7 +9,6 @@ require_once 'model/model.php';
 require_once 'controller/controller.php';
 require_once 'controller/home.php';
 require_once 'controller/registerController.php';
-require_once 'controller/searchController.php';
 
 
 // Rooter
