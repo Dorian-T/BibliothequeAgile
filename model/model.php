@@ -84,7 +84,7 @@ class Model {
      * @return array The list of authors.
      */
     public function getBooksByCategory($id) {
-        $requete = "SELECT * FROM BOOK WHERE category_id = :id";
+        $requete = "SELECT * FROM BOOK WHERE id = :id";
         $params = ['id' => $id];
         return $this->executeRequest($requete, $params);
     }
