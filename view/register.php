@@ -28,7 +28,13 @@
 		<div>
 			<label for="adresse">Adresse</label>
 			<input type="text" id="adresse" name="adresse" required>
-		</div>		
+		</div>
+		
+		<div>
+			<label for="valider">Valider</label>
+			<input type="submit" id="valider" name="valider">
+			<input type="hidden" name="action" value="registerClient">
+		</div>
 	</form>
 </div>
 </main>

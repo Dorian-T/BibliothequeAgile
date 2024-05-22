@@ -82,4 +82,25 @@ class Model {
 
 
 	// === Il faut coder ici ===
+
+
+
+	/**
+	 * Register a new client in the database.
+	 * 
+	 * @param string $nom The last name of the client.
+	 * @param string $prenom The first name of the client.
+	 * @param string $date_naissance The birth date of the client.
+	 * @param string $telephone The phone number of the client.
+	 * @param string $email The email address of the client.
+	 * @param string $adresse The address of the client.
+	 * @return int The id of the new client.
+	 */
+	public function registerClient(string $nom, string $prenom, string $date_naissance, string $telephone, string $email, string $adresse) {
+		$requete = "INSERT INTO customer (last_name, first_name, birth_date, phone, email) VALUES (:nom, :prenom, :date_naissance, :telephone, :email)";
+		$params = ['nom' => $nom, 'prenom' => $prenom, 'date_naissance' => $date_naissance, 'telephone' => $telephone, 'email' => $email];
+		$this->executeRequest($requete, $params);
+		return self::$db->lastInsertId();
+	}
+	
 }
