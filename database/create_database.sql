@@ -3,13 +3,17 @@ CREATE DATABASE IF NOT EXISTS `bibliotheque_agile`;
 USE `bibliotheque_agile`;
 
 
+-- Category table
+DROP TABLE IF EXISTS Category;
 CREATE TABLE Category(
-     id INT,
-     name VARCHAR(64) NOT NULL,
-     PRIMARY KEY(id),
-     UNIQUE(name)
+    id INT,
+    name VARCHAR(64) NOT NULL,
+    PRIMARY KEY(id),
+    UNIQUE(name)
 );
 
+-- Customer table
+DROP TABLE IF EXISTS Customer;
 CREATE TABLE Customer(
     id INT,
     first_name VARCHAR(64) NOT NULL,
@@ -21,7 +25,9 @@ CREATE TABLE Customer(
     is_admin int NOT NULL,
     PRIMARY KEY(id)
 );
--- transaction table
+
+-- Book table
+DROP TABLE IF EXISTS Book;
 CREATE TABLE Book(
     id INT,
     title VARCHAR(64) NOT NULL,
@@ -35,6 +41,3 @@ CREATE TABLE Book(
     FOREIGN KEY(category) REFERENCES Category(id),
     FOREIGN KEY(borrowed_by) REFERENCES Customer(id)
 );
-
-
-
