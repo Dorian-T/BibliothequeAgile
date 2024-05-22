@@ -10,6 +10,7 @@
 		
         <label for="categorie-select">choisir une catégorie:</label>
         <select name="categorie" id="categorie-select">
+			<option value="">Toutes les catégories</option>
             <?php foreach ($categories as $category) : ?>
                 <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
             <?php endforeach; ?>
