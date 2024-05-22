@@ -30,4 +30,6 @@ class Controller {
     public function render() {
         echo 'This method should be overriden.';
     }
+
+
 }

@@ -9,6 +9,7 @@ require_once 'model/model.php';
 require_once 'controller/controller.php';
 require_once 'controller/home.php';
 require_once 'controller/registerController.php';
+require_once 'controller/searchController.php';
 
 
 // Rooter
@@ -18,6 +19,12 @@ if(isset($_GET['action'])) {
 		// 	$controller = new ...
 		// 	$controller->render();
 		// 	break;
+
+		case 'home':
+			$controller = new HomeController();
+			$controller->render();
+			break;
+			
 
 		case 'register':
 			$controller = new RegisterController();
