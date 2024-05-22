@@ -76,12 +76,25 @@ class Model {
 
     /**
      * Get for book by categories.
-     *
+     * 
+     * @param string $id The id of the category.
      * @return array The list of authors.
      */
+    public function getBooksByCategory($id) {
+        $requete = "SELECT * FROM BOOK WHERE category_id = :id";
+        $params = ['id' => $id];
+        return $this->executeRequest($requete, $params);
+    }
 
-
-	// === Il faut coder ici ===
+    /**
+     * Get all categories from the database.
+     * 
+     * @return array The list of categories.
+     */
+    public function getAllCategories() {
+        $requete = "SELECT * FROM CATEGORY";
+        return $this->executeRequest($requete);
+    }
 
 
 
@@ -101,6 +114,24 @@ class Model {
 		$params = ['nom' => $nom, 'prenom' => $prenom, 'date_naissance' => $date_naissance, 'telephone' => $telephone, 'email' => $email];
 		$this->executeRequest($requete, $params);
 		return self::$db->lastInsertId();
+	}
+
+	/**
+	 * Search for a client by ID
+	 * 
+	 * @param int $id The id of the client.
+	 * @return array The client that match the id.
+	 */
+
+	public function getClientById($id) {
+		$requete = "SELECT * FROM customer WHERE id = :id";
+		$params = ['id' => $id];
+		return ($this->executeRequest($requete, $params))[0];
+	}
+
+	public function getClients() {
+		$requete = "SELECT * FROM customer";
+		return $this->executeRequest($requete);
 	}
 	
 }
