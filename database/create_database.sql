@@ -45,6 +45,6 @@ CREATE TABLE Borrowing(
     customer_id INT NOT NULL,
     PRIMARY KEY(book_id, customer_id),
     FOREIGN KEY(book_id) REFERENCES Book(id),
-    FOREIGN KEY(customer_id) REFERENCES Customer(id)
+    FOREIGN KEY(customer_id) REFERENCES Customer(id),
     UNIQUE(book_id)
 );
