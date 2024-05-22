@@ -15,7 +15,7 @@
 
 	<form action="index.php?action=home" method="post">
         <label for="book_name">Nom du Livre:</label>
-        <input type="text" id="book_name" name="book_name" required>
+        <input type="text" id="book_name" name="book_name">
         <button type="submit">Rechercher</button>
     </form>
 
