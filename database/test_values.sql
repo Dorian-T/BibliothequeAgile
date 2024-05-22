@@ -42,9 +42,3 @@ INSERT INTO Borrowing(book_id, customer_id) VALUES
     (2, 1),
     (3, 2)
 ;
-
-INSERT INTO Borrowing(book_id, customer_id) VALUES
-    (1, 1),
-    (2, 1),
-    (3, 2)
-;
