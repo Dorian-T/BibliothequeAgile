@@ -36,3 +36,9 @@ INSERT INTO Book(id, title, author, edition, publication_year, genre, location, 
     (19, 'Les quatres accords tolteques', 'Miguel Ruiz', 'Poche Jouvence', 2016, 6, 'A6', NULL),
     (20, 'Jung, un voyage vers soi', 'Frederic Lenoir', 'Le livre de poche', 2023, 3, 'A3', NULL)
 ;
+
+INSERT INTO Borrowing(book_id, customer_id) VALUES
+    (1, 1),
+    (2, 1),
+    (3, 2)
+;

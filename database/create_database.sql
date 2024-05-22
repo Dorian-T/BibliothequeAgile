@@ -3,12 +3,6 @@ DROP DATABASE IF EXISTS `bibliotheque_agile`;
 CREATE DATABASE IF NOT EXISTS `bibliotheque_agile`;
 USE `bibliotheque_agile`;
 
-
-DROP TABLE IF EXISTS Book;
-DROP TABLE IF EXISTS Category;
-DROP TABLE IF EXISTS Customer;
-
-
 -- Category table
 CREATE TABLE Category(
     id INT NOT NULL AUTO_INCREMENT,
@@ -43,4 +37,14 @@ CREATE TABLE Book(
     PRIMARY KEY(id),
     FOREIGN KEY(genre) REFERENCES Category(id),
     FOREIGN KEY(borrowed_by) REFERENCES Customer(id)
+);
+
+-- Borrowing table
+CREATE TABLE Borrowing(
+    book_id INT NOT NULL,
+    customer_id INT NOT NULL,
+    PRIMARY KEY(book_id, customer_id),
+    FOREIGN KEY(book_id) REFERENCES Book(id),
+    FOREIGN KEY(customer_id) REFERENCES Customer(id)
+    UNIQUE(book_id)
 );
