@@ -18,6 +18,7 @@ class HomeController extends Controller {
 			$title = isset($_POST['book_name']) ? $_POST['book_name'] : '';
 			$books = $this->model->searchBookByName($title);
 		} else {
+            $categories=$this->model->getAllCategories();
 			$books = $this->model->getAllBooks();
 		}
 		require_once 'view/home.php';

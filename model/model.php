@@ -76,12 +76,25 @@ class Model {
 
     /**
      * Get for book by categories.
-     *
+     * 
+     * @param string $id The id of the category.
      * @return array The list of authors.
      */
+    public function getBooksByCategory($id) {
+        $requete = "SELECT * FROM BOOK WHERE category_id = :id";
+        $params = ['id' => $id];
+        return $this->executeRequest($requete, $params);
+    }
 
-
-	// === Il faut coder ici ===
+    /**
+     * Get all categories from the database.
+     * 
+     * @return array The list of categories.
+     */
+    public function getAllCategories() {
+        $requete = "SELECT * FROM CATEGORY";
+        return $this->executeRequest($requete);
+    }
 
 
 
