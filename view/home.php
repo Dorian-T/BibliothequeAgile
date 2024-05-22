@@ -7,6 +7,7 @@
 
 
 	<form action="index.php?action=home" method="post">
+		
         <label for="categorie-select">choisir une catégorie:</label>
         <select name="categorie" id="categorie-select">
             <?php foreach ($categories as $category) : ?>
