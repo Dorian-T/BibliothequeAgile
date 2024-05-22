@@ -1,4 +1,5 @@
 -- Database creation
+DROP DATABASE IF EXISTS `bibliotheque_agile`;
 CREATE DATABASE IF NOT EXISTS `bibliotheque_agile`;
 USE `bibliotheque_agile`;
 
@@ -32,12 +33,12 @@ CREATE TABLE Book(
     id INT,
     title VARCHAR(64) NOT NULL,
     author VARCHAR(128) NOT NULL,
-    editor VARCHAR(64) NOT NULL,
-    publishing_date INT NOT NULL,
-    category INT NOT NULL,
-    shelf VARCHAR(64) NOT NULL,
+    edition VARCHAR(64) NOT NULL,
+    publishing_year INT NOT NULL,
+    genre INT NOT NULL,
+    location VARCHAR(64) NOT NULL,
     borrowed_by INT,
     PRIMARY KEY(id),
-    FOREIGN KEY(category) REFERENCES Category(id),
+    FOREIGN KEY(genre) REFERENCES Category(id),
     FOREIGN KEY(borrowed_by) REFERENCES Customer(id)
 );
