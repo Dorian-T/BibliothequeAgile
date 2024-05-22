@@ -3,8 +3,12 @@ CREATE DATABASE IF NOT EXISTS `bibliotheque_agile`;
 USE `bibliotheque_agile`;
 
 
--- Category table
+DROP TABLE IF EXISTS Book;
 DROP TABLE IF EXISTS Category;
+DROP TABLE IF EXISTS Customer;
+
+
+-- Category table
 CREATE TABLE Category(
     id INT,
     name VARCHAR(64) NOT NULL,
@@ -13,7 +17,6 @@ CREATE TABLE Category(
 );
 
 -- Customer table
-DROP TABLE IF EXISTS Customer;
 CREATE TABLE Customer(
     id INT,
     first_name VARCHAR(64) NOT NULL,
@@ -27,7 +30,6 @@ CREATE TABLE Customer(
 );
 
 -- Book table
-DROP TABLE IF EXISTS Book;
 CREATE TABLE Book(
     id INT,
     title VARCHAR(64) NOT NULL,
