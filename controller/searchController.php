@@ -1,26 +1,26 @@
 <?php
 
 /**
- * Class HomeController
- *
- * This class represents the controller for the home page.
+ * class RegisterController
+ * 
+ * This class is the controller for the register page.
  * It extends the base Controller class.
  */
-class HomeController extends Controller {
+class SearchController extends Controller {
 
 	// === Methods ===
 
 	/**
-	 * Renders the home page.
+	 * Renders the register page.
 	 */
 	public function render() {
+
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$title = isset($_POST['book_name']) ? $_POST['book_name'] : '';
 			$books = $this->model->searchBookByName($title);
 		} else {
-            $categories=$this->model->getAllCategories();
 			$books = $this->model->getAllBooks();
 		}
-		require_once 'view/home.php';
+		require_once 'view/search.php';
 	}
 }
