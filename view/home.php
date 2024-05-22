@@ -1,9 +1,16 @@
 <?php ob_start(); ?>
 
 <main id="home">
-    <label for="pet-select">Choose a pet:</label>
 
 	<h1>Liste des livres</h1>
+	<label for="categorie-select">choisir une catégorie:</label>	
+
+	<select name="categorie" id="categorie-select">
+		<option value="">categorie</option>
+		<?php foreach ($categories as $category) : ?>
+			<option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+		<?php endforeach; ?>
+	</select>
 	<table>
 		<thead>
 			<tr>

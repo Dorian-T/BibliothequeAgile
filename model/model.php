@@ -78,7 +78,7 @@ class Model {
      *
      * @return array The list of authors.
      */
-    public function allCategories() {
+    public function getAllCategories() {
         $requete = "SELECT * FROM CATEGORY";
         return $this->executeRequest($requete);
     }

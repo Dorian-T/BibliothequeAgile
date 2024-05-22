@@ -15,6 +15,7 @@ class HomeController extends Controller {
 	 */
 	public function render() {
 		$books = $this->model->getAllBooks();
+        $categories = $this->model->getAllCategories();
 
 		require_once 'view/home.php';
 	}
