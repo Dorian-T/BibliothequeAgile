@@ -13,7 +13,7 @@
 				<th>Titre</th>
 				<th>Auteur</th>
 				<th>Edition</th>
-				<th>Année de paruption</th>
+				<th>Année de parution</th>
 				<th>Genre</th>
 				<th>Emplacement</th>
 			</tr>
