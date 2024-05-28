@@ -7,6 +7,7 @@
 			<tr>
 				<th colspan="2">Livre</th>
 				<th colspan="2">Emprunteur</th>
+				<th rowspan="2">Rendre</th>
 			</tr>
 			<tr>
 				<th>Titre</th>
@@ -22,6 +23,13 @@
 					<td><?= $borrowing['author'] ?></td>
 					<td><?= $borrowing['first_name'] ?></td>
 					<td><?= $borrowing['last_name'] ?></td>
+					<td>
+						<form action="index.php?action=borrowing" method="post">
+							<input type="hidden" name="ClientID" value="<?= $borrowing['ClientID'] ?>">
+							<input type="hidden" name="BookID" value="<?= $borrowing['BookID'] ?>">
+							<input type="submit" value="Rendre">
+						</form>
+					</td>
 				</tr>
 			<?php endforeach; ?>
 	</table>
