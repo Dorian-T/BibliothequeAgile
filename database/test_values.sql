@@ -42,3 +42,9 @@ INSERT INTO Borrowing(book_id, customer_id) VALUES
     (2, 1),
     (3, 2)
 ;
+
+INSERT INTO Reservation(book_id, customer_id) VALUES
+    (4, 1),
+    (5, 1),
+    (6, 2)
+;
