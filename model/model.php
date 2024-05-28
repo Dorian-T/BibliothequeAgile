@@ -149,5 +149,11 @@ class Model {
 		$requete = "SELECT * FROM customer";
 		return $this->executeRequest($requete);
 	}
+
+	function borrowBook($book_id, $customer_id) {
+		$sql = "INSERT INTO Borrowing (book_id, customer_id) VALUES (:book_id, :customer_id)";
+		$params = ['book_id' => $book_id, 'customer_id' => $customer_id];
+		return $this->executeRequest($sql, $params);
+	}
 	
 }
