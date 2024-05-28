@@ -33,7 +33,7 @@ if(isset($_GET['action'])) {
 
 		case 'reservation':
 			$controller = new ReservationController();
-			$controller->render();
+			$controller->render($_GET('id') ?? null);
 			break;
 
 		default:
