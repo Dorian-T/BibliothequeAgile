@@ -159,7 +159,7 @@ class Model {
 		return $this->executeRequest($requete, $params);
 	}
 
-	public function convertBorrowing($bookID,$ClientID) {
+	public function convertBorrowingID($bookID,$ClientID) {
 		$requete = "SELECT * FROM customer WHERE id = :ClientID";
 		$params = ['ClientID' => $ClientID];
 		$client = ($this->executeRequest($requete, $params))[0];
@@ -167,13 +167,13 @@ class Model {
 		$requete = "SELECT * FROM Book WHERE id = :bookID";
 		$params = ['bookID' => $bookID];
 		$book = ($this->executeRequest($requete, $params))[0];
-		$book["bookID"] = $bookID;
+		$book["BookID"] = $bookID;
 		return $client + $book;
 	}
 	public function convertBorrowings($borrowings) {
 		$converted = [];
 		foreach ($borrowings as $borrowing) {
-			$converted[] = $this->convertBorrowing($borrowing["book_id"],$borrowing["customer_id"]);
+			$converted[] = $this->convertBorrowingID($borrowing["book_id"],$borrowing["customer_id"]);
 		}
 		return $converted;
 	}
@@ -197,7 +197,7 @@ class Model {
 	}
 
 	public function newBorrow($ClientID,$bookID) {
-		$requete = "INSERT INTO borrowing (customer_id, book_id, borrowing_date) VALUES (:ClientID, :bookID, NOW())";
+		$requete = "INSERT INTO borrowing (customer_id, book_id) VALUES (:ClientID, :bookID)";
 		$params = ['ClientID' => $ClientID, 'bookID' => $bookID];
 		$this->executeRequest($requete, $params);
 	}

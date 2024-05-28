@@ -27,7 +27,7 @@
 						<form action="index.php?action=borrowing" method="post">
 							<input type="hidden" name="ClientID" value="<?= $borrowing['ClientID'] ?>">
 							<input type="hidden" name="BookID" value="<?= $borrowing['BookID'] ?>">
-							<input type="submit" value="Rendre">
+							<input type="submit" name="Rendre" value="Rendre">
 						</form>
 					</td>
 				</tr>
