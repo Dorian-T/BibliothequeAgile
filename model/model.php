@@ -50,6 +50,7 @@ class Model {
 		$requete = "
 			SELECT B.title, B.author, B.edition, B.publication_year, C.name AS genre, B.location
 			FROM BOOK AS B JOIN CATEGORY AS C ON B.genre = C.id
+			ORDER BY genre, author, title;
 		";
 		return $this->executeRequest($requete);
 	}
