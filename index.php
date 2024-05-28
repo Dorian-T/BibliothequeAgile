@@ -9,6 +9,7 @@ require_once 'model/model.php';
 require_once 'controller/controller.php';
 require_once 'controller/home.php';
 require_once 'controller/registerController.php';
+require_once 'controller/reservationController.php';
 
 
 // Rooter
@@ -27,6 +28,11 @@ if(isset($_GET['action'])) {
 
 		case 'register':
 			$controller = new RegisterController();
+			$controller->render();
+			break;
+
+		case 'reservation':
+			$controller = new ReservationController();
 			$controller->render();
 			break;
 
