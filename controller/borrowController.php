@@ -16,9 +16,14 @@ class borrowController extends Controller {
 	public function render() {
 
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-			$id = isset($_POST['book_id']) ? $_POST['book_id'] : '';
-			$book = $this->model->getBookById($id);
-			require_once 'view/search.php';
+			$book_id = isset($_POST['book_id']) ? $_POST['book_id'] : '';
+			$customer_id = isset($_POST['customer_id']) ? $_POST['customer_id'] : '';
+			$state = $this->model->borrowBook($book_id, $customer_id);
+			
+			if ($state){
+				require_once 'view/search.php';
+			}
+			echo("Erreur lors de l'empreint");
 		} else {
 			header('Location: ./');
 		}
