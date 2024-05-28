@@ -29,6 +29,7 @@
 				<th>Année de parution</th>
 				<th>Genre</th>
 				<th>Emplacement</th>
+                <th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -40,6 +41,7 @@
 					<td><?= $book['publication_year'] ?></td>
 					<td><?= $book['genre'] ?></td>
 					<td><?= $book['location'] ?></td>
+                    <td><button><a href="index.php?action=book&id"=<?= $book['id'] ?>>réserver</a></button></td>
 				</tr>
 			<?php endforeach; ?>
 		</tbody>

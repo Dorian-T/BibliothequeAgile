@@ -48,7 +48,7 @@ class Model {
 	 */
 	public function getAllBooks() {
 		$requete = "
-			SELECT B.title, B.author, B.edition, B.publication_year, C.name AS genre, B.location
+			SELECT B.id, B.title, B.author, B.edition, B.publication_year, C.name AS genre, B.location
 			FROM BOOK AS B JOIN CATEGORY AS C ON B.genre = C.id";
 		return $this->executeRequest($requete);
 	}
