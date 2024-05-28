@@ -16,6 +16,7 @@ header {
 	top: 0;
 	left: 0;
 	right: 0;
+	padding: 10px 0;
 	z-index: 1;
 }
 
@@ -38,7 +39,7 @@ header li {
 main {
 	margin: 0 auto;
 	position: sticky;
-	width: 50%;
+	width: fit-content;
 }
 
 
@@ -56,6 +57,6 @@ table th {
 	background-color: #ADC178;
 }
 
-table td {
+table td, table th {
 	border: 1px solid black;
 }

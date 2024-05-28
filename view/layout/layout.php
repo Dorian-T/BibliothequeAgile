@@ -8,7 +8,6 @@
 
 	<link rel="stylesheet" href="css/layout.css">
 	<link rel="stylesheet" href="css/home.css">
-	<!-- TODO: Add the CSS files here -->
 </head>
 
 <body>
