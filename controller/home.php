@@ -32,7 +32,7 @@ class HomeController extends Controller {
             }
 
             if (!empty($title) && !empty($idCategory)) {
-                $books = $this->model->searchBookByNameAndCategories($title);
+                $books = $this->model->searchBookByNameAndCategories($title, $idCategory);
             }
 
             if (empty($books)) {

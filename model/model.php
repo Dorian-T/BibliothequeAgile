@@ -100,6 +100,18 @@ class Model {
         return $this->executeRequest($requete);
     }
 
+    /**
+     * Search for a book by name and categories.
+     *
+     * @param string $nom The name of the book.
+     * @return array The list of books that match the name.
+     */
+    public function searchBookByNameAndCategories(string $nom, string $id) {
+        $requete = "SELECT B.title, B.author, B.edition, B.publication_year, C.name AS genre, B.location
+			FROM BOOK AS B JOIN CATEGORY AS C ON B.genre = C.id WHERE title LIKE :name AND genre = :id";
+        $params = ['name' => '%' . $nom . '%', 'id' => $id];
+        return $this->executeRequest($requete, $params);
+    }
 
 
 	/**
