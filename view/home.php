@@ -6,15 +6,15 @@
 
 
 
-	<form action="index.php?action=home" method="post">
-		
-        <label for="categorie-select">choisir une catégorie:</label>
-        <select name="categorie" id="categorie-select">
-			<option value="">Toutes les catégories</option>
+    <form action="index.php?action=home" method="post">
+        <label for="categorie-select">Catégorie:</label>
+        <select name="categorie-select" id="categorie-select">
+            <option value="">Toutes les catégories</option>
             <?php foreach ($categories as $category) : ?>
-                <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+                <option value="<?= htmlspecialchars($category['id']) ?>"><?= htmlspecialchars($category['name']) ?></option>
             <?php endforeach; ?>
         </select>
+
         <label for="book_name">Nom du Livre:</label>
         <input type="text" id="book_name" name="book_name">
         <button type="submit">Rechercher</button>

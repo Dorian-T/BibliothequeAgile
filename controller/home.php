@@ -13,23 +13,33 @@ class HomeController extends Controller {
 	/**
 	 * Renders the home page.
 	 */
-	public function render() {
-		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-			$title = isset($_POST['book_name']) ? $_POST['book_name'] : '';
-			$books = $this->model->searchBookByName($title);
-			$categories=$this->model->getAllCategories();
+    public function render() {
+        $categories = $this->model->getAllCategories();
 
-			if (empty($books)) {
-				$idCategory = isset($_POST['categorie-select']) ? $_POST['categorie-select'] : '';
-				$books = $this->model->getBooksByCategory($idCategory);
-				$categories=$this->model->getAllCategories();
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-			}
+            $title = isset($_POST['book_name']) ? trim($_POST['book_name']) : '';
+            $idCategory = isset($_POST['categorie-select']) ? trim($_POST['categorie-select']) : '';
 
-		} else {
-            $categories=$this->model->getAllCategories();
-			$books = $this->model->getAllBooks();
-		}
-		require_once 'view/home.php';
-	}
+            $books = [];
+
+            if (!empty($title)) {
+                $books = $this->model->searchBookByName($title);
+            }
+
+            if (empty($books) && !empty($idCategory)) {
+                $books = $this->model->getBooksByCategory($idCategory);
+            }
+
+            if (empty($books)) {
+                $books = $this->model->getAllBooks();
+            }
+
+        } else {
+            $books = $this->model->getAllBooks();
+        }
+
+        require_once 'view/home.php';
+    }
+
 }
