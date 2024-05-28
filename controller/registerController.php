@@ -12,10 +12,8 @@ class RegisterController extends Controller {
 
 	public function __construct() {
 		parent::__construct();
-		if (isset($_POST["action"])) {
-            if ($_POST["action"] == "registerClient") {
-                $this->registerClient();
-            }
+		if (isset($_POST["action"]) && $_POST["action"] == "registerClient") {
+            $this->registerClient();
         }
 	}
 
@@ -23,9 +21,12 @@ class RegisterController extends Controller {
 	 * Renders the register page.
 	 */
 	public function render() {
-
 		require_once 'view/register.php';
 	}
+
+	/**
+	 * Registers a new client.
+	 */
 	private function registerClient() {
         $nom = $_POST["nom"];
         $prenom = $_POST["prenom"];
