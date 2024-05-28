@@ -150,6 +150,12 @@ class Model {
 		return $this->executeRequest($requete);
 	}
 
+	function getCustomerId($email){
+		$requete = "SELECT id FROM customer WHERE email=:customer_email";
+		$params = ['customer_email' => $email];
+		return $this->executeRequest($requete, $params);
+	}
+
 	function borrowBook($book_id, $customer_id) {
 		$sql = "INSERT INTO Borrowing (book_id, customer_id) VALUES (:book_id, :customer_id)";
 		$params = ['book_id' => $book_id, 'customer_id' => $customer_id];

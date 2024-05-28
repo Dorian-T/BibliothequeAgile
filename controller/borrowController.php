@@ -17,7 +17,8 @@ class borrowController extends Controller {
 
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$book_id = isset($_POST['book_id']) ? $_POST['book_id'] : '';
-			$customer_id = isset($_POST['customer_id']) ? $_POST['customer_id'] : '';
+			$customer_email = isset($_POST['customer_email']) ? $_POST['customer_email'] : '';
+			$customer_id = $this->model->getCustomerId($customer_email);
 			$state = $this->model->borrowBook($book_id, $customer_id);
 			
 			if ($state){
