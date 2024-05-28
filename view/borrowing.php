@@ -20,7 +20,7 @@
 				<tr>
 					<td><?= $borrowing['title'] ?></td>
 					<td><?= $borrowing['author'] ?></td>
-					<td><?= $borrowing['firs_tname'] ?></td>
+					<td><?= $borrowing['first_name'] ?></td>
 					<td><?= $borrowing['last_name'] ?></td>
 				</tr>
 			<?php endforeach; ?>

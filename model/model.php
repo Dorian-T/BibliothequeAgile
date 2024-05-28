@@ -160,7 +160,7 @@ class Model {
 	}
 
 	public function convertBorrowing($bookID,$ClientID) {
-		$requete = "SELECT * FROM Client WHERE id = :ClientID";
+		$requete = "SELECT * FROM customer WHERE id = :ClientID";
 		$params = ['ClientID' => $ClientID];
 		$client = ($this->executeRequest($requete, $params))[0];
 		$client["ClientID"] = $ClientID;
@@ -168,7 +168,7 @@ class Model {
 		$params = ['bookID' => $bookID];
 		$book = ($this->executeRequest($requete, $params))[0];
 		$book["bookID"] = $bookID;
-		return $client.$book;
+		return $client + $book;
 	}
 	public function convertBorrowings($borrowings) {
 		$converted = [];
@@ -183,7 +183,7 @@ class Model {
 		$params = ['ClientID' => $ClientID, 'bookID' => $bookID];
 		return ($this->executeRequest($requete, $params))[0];
 	}
-	
+
 	public function getBorrowings() {
 		$requete = "SELECT * FROM borrowing";
 		$rslt = $this->executeRequest($requete);
