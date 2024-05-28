@@ -40,3 +40,22 @@ main {
 	position: sticky;
 	width: 50%;
 }
+
+
+/* Table */
+
+table {
+	border-collapse: collapse;
+}
+
+table tr:nth-child(odd) {
+	background-color: #DDE5B6;
+}
+
+table th {
+	background-color: #ADC178;
+}
+
+table td {
+	border: 1px solid black;
+}

@@ -2,7 +2,7 @@
 
 /**
  * class RegisterController
- * 
+ *
  * This class is the controller for the register page.
  * It extends the base Controller class.
  */
