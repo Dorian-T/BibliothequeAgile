@@ -18,6 +18,7 @@
 		</select>
 		<br>
 		<input type="submit" name="Borrow" value="Valider l'emprunt">
+		<input type="submit" name="Cancel" value="Annuler">
 	</form>
 		
 </main>
