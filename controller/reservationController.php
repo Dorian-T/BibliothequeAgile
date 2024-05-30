@@ -26,7 +26,6 @@ class ReservationController extends Controller
 	 */
 	public function render()
 	{
-
 		if ($this->bookId != null) {
 			$bookId = $this->bookId;
 			if (isset($_POST['submit'])) {
@@ -49,15 +48,13 @@ class ReservationController extends Controller
 				}
 
 				$this->model->reserveBook($this->bookId, $customerId);
+                require_once 'view/reservation.php';
 			}
-		} else {
-			echo("erreur bookid vide");
-			//retourner sur home
+		} else if($_SESSION['admin']) {
+            $reservations = $this->model->getReservedBooks();
+            require_once 'view/AdminReservation.php';
+        } else {
+            header('Location: ./');
 		}
-
-		require_once 'view/reservation.php';
 	}
-
-	
-
 }
