@@ -17,7 +17,7 @@ class AdminLogoutController extends Controller {
         session_start();
         session_destroy();
         // Redirige vers la page de connexion admin après la déconnexion
-        header('Location: /');
+        header('Location:./');
         exit();
     }
 }

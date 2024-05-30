@@ -38,7 +38,7 @@ class AdminLoginController extends Controller {
             session_start();
             $_SESSION['admin'] = $admin;
             // Redirect to the admin dashboard
-            header('Location: .');
+            header('Location: ./');
             exit();
         } else {
             // Redirect to the login page with an error message
