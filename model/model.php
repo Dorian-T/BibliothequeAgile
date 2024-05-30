@@ -156,7 +156,7 @@ class Model {
 		return $this->executeRequest($requete, $params);
 	}
 
-	function borrowBook($book_id, $customer_id) {
+	function borrowBook($book_id, $customer_id) { // on verra ça au moment du merge
 		$sql = "INSERT INTO Borrowing (book_id, customer_id) VALUES (:book_id, :customer_id)";
 		$params = ['book_id' => $book_id, 'customer_id' => $customer_id];
 		return $this->executeRequest($sql, $params);
@@ -172,14 +172,28 @@ class Model {
 	}
 
 	/**
- * Reserve a book for a customer.
- *
- * @param int $book_id The ID of the book to reserve.
- * @param int $customer_id The ID of the customer reserving the book.
- */
-public function reserveBook($book_id, $customer_id) {
-    $sql = "INSERT INTO Reservation (book_id, customer_id) VALUES (:book_id, :customer_id)";
-    $params = ['book_id' => $book_id, 'customer_id' => $customer_id];
-    $this->executeRequest($sql, $params);
-}
+	 * Reserve a book for a customer.
+	 *
+	 * @param int $book_id The ID of the book to reserve.
+	 * @param int $customer_id The ID of the customer reserving the book.
+	 */
+	public function reserveBook($book_id, $customer_id) {
+		$sql = "INSERT INTO Reservation (book_id, customer_id) VALUES (:book_id, :customer_id)";
+		$params = ['book_id' => $book_id, 'customer_id' => $customer_id];
+		$this->executeRequest($sql, $params);
+	}
+
+	/**
+	 * Cancel a reservation.
+	 *
+	 * @param int $book_id The ID of the book to cancel the reservation for.
+	 * @param int $customer_id The ID of the customer who reserved the book.
+	 */
+	public function cancelReservation($book_id, $customer_id) {
+		$sql = "DELETE
+				FROM Reservation
+				WHERE book_id = :book_id AND customer_id = :customer_id";
+		$params = ['book_id' => $book_id, 'customer_id' => $customer_id];
+		$this->executeRequest($sql, $params);
+	}
 }
