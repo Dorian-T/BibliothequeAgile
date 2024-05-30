@@ -12,34 +12,26 @@ class HomeController extends Controller {
 
 	/**
 	 * Renders the home page.
-	 */
+    */
     public function render() {
         $categories = $this->model->getAllCategories();
+        $selectedCategory = '';
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
             $title = isset($_POST['book_name']) ? trim($_POST['book_name']) : '';
-            $idCategory = isset($_POST['categorie-select']) ? trim($_POST['categorie-select']) : '';
-
-            $books = [];
+            $selectedCategory = isset($_POST['categorie-select']) ? $_POST['categorie-select'] : '';
 
             if (!empty($title)) {
                 $books = $this->model->searchBookByName($title);
-            }
-
-            if (empty($books) && !empty($idCategory)) {
-                $books = $this->model->getBooksByCategory($idCategory);
-            }
-
-            if (empty($books)) {
+            } elseif (!empty($selectedCategory)) {
+                $books = $this->model->getBooksByCategory($selectedCategory);
+            } else {
                 $books = $this->model->getAllBooks();
             }
-
         } else {
             $books = $this->model->getAllBooks();
         }
 
         require_once 'view/home.php';
     }
-
 }

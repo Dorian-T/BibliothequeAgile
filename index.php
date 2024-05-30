@@ -36,12 +36,12 @@ if(isset($_GET['action'])) {
 			$controller->render();
 			break;
 
-			case 'adminlogin':
-				$controller = new AdminLoginController();
-				$controller->render();
-				break;
+		case 'adminlogin':
+			$controller = new AdminLoginController();
+			$controller->render();
+			break;
 
-			case 'adminlogout':
+		case 'adminlogout':
 			if (!isset($_SESSION['admin'])) {
 				// Redirige vers la page de connexion admin si pas connecté
 				header('Location: ./');
