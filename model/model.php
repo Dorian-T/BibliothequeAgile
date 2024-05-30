@@ -170,4 +170,16 @@ class Model {
 		$params = ['customer_id' => $customer_id];
 		return $this->executeRequest($sql, $params);
 	}
+
+	/**
+ * Reserve a book for a customer.
+ *
+ * @param int $book_id The ID of the book to reserve.
+ * @param int $customer_id The ID of the customer reserving the book.
+ */
+public function reserveBook($book_id, $customer_id) {
+    $sql = "INSERT INTO Reservation (book_id, customer_id) VALUES (:book_id, :customer_id)";
+    $params = ['book_id' => $book_id, 'customer_id' => $customer_id];
+    $this->executeRequest($sql, $params);
+}
 }
