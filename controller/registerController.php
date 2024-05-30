@@ -33,8 +33,7 @@ class RegisterController extends Controller {
         $date_naissance = $_POST["date_naissance"];
         $telephone = $_POST["telephone"];
         $email = $_POST["email"];
-        $adresse = $_POST["adresse"];
 
-        $this->model->registerClient($nom, $prenom, $date_naissance, $telephone, $email, $adresse);
+        $this->model->registerClient($nom, $prenom, $date_naissance, $telephone, $email, "None");
     }
 }
