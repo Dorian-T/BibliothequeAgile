@@ -46,5 +46,13 @@ class AdminLoginController extends Controller {
             exit();
         }
     }
+
+    public function logout() {
+        session_start();
+        session_destroy();
+        // Redirige vers la page de connexion admin après la déconnexion
+        header('Location:./');
+        exit();
+    }
 }
 ?>

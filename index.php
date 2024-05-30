@@ -11,7 +11,6 @@ require_once 'controller/home.php';
 require_once 'controller/registerController.php';
 require_once 'controller/borrowingController.php';
 require_once 'controller/adminLoginController.php';
-require_once 'controller/adminLogoutController.php';
 
 // Rooter
 if(isset($_GET['action'])) {
@@ -47,7 +46,7 @@ if(isset($_GET['action'])) {
 				header('Location: ./');
 				exit();
 			}
-			$controller = new AdminLogoutController();
+			$controller = new AdminLoginController();
 			$controller->logout();
 			break;
 
