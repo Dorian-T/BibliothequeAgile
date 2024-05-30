@@ -47,6 +47,8 @@ main {
 
 table {
 	border-collapse: collapse;
+	border : 2px solid black;
+	border-radius: 10px;
 }
 
 table tr:nth-child(odd) {
@@ -59,4 +61,35 @@ table th {
 
 table td, table th {
 	border: 1px solid black;
+	padding: 1em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+table a {
+	text-decoration: none;
+}
+
+table tr:nth-child(odd) input[type="submit"], table tr:nth-child(odd) a {
+	background-color: #f0ead2;
+	color: black;
+	border: none;
+	padding: 0.5em;
+	width: 100%;
+}
+
+table tr:nth-child(even) input[type="submit"], table tr:nth-child(even) a {
+	background-color: #ADC178;
+	color: white;
+	border: none;
+	padding: 0.5em;
+	width: 100%;
+}
+table tr:nth-child(even) input[type="submit"]:hover, table tr:nth-child(even) a:hover {
+	background-color: #f0ead2;
+	color: black;
+}
+table tr:nth-child(odd) input[type="submit"]:hover, table tr:nth-child(odd) a:hover {
+	background-color: #ADC178;
+	color: white;
 }

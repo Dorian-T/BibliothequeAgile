@@ -34,36 +34,3 @@
 	background-color: #DDE5B6;
 	color: black;
 }
-#borrowing th, #borrowing td{
-	padding: 1em;
-	padding-top: 0.5em;
-	padding-bottom: 0.5em;
-}
-#borrowing table {
-	border : 2px solid black;
-	border-radius: 10px;
-}
-
-
-#borrowing table tr:nth-child(odd) input[type="submit"] {
-	background-color: #f0ead2;
-	color: black;
-	border: none;
-	padding: 0.5em;
-	width: 100%;
-}
-#borrowing table tr:nth-child(even) input[type="submit"] {
-	background-color: #ADC178;
-	color: white;
-	border: none;
-	padding: 0.5em;
-	width: 100%;
-}
-#borrowing table tr:nth-child(even) input[type="submit"]:hover {
-	background-color: #f0ead2;
-	color: black;
-}
-#borrowing table tr:nth-child(odd) input[type="submit"]:hover {
-	background-color: #ADC178;
-	color: white;
-}

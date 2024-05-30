@@ -7,7 +7,6 @@
 	<title>Bibliothèque Agile</title>
 
 	<link rel="stylesheet" href="css/layout.css">
-	<link rel="stylesheet" href="css/home.css">
 	<link rel="stylesheet" href="css/borrowing.css">
 </head>
 
@@ -20,8 +19,9 @@
 				<?php if (!isset($_SESSION['admin'])): ?>
 					<li><a href="index.php?action=adminlogin">Connexion Admin</a></li>
 				<?php else: ?>
-					<li><a href="index.php?action=borrowing">Emprunt</a></li>
-					<li><a href="index.php?action=adminlogout">Deconnexion</a></li>
+					<li><a href="index.php?action=borrowing">Emprunts</a></li>
+					<li><a href="index.php?action=reservation">Réservations</a></li>
+					<li><a href="index.php?action=adminlogout">Déconnexion</a></li>
 				<?php endif; ?>
 			</ul>
 		</nav>
