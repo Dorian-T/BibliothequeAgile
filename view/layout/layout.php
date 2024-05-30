@@ -8,6 +8,7 @@
 
 	<link rel="stylesheet" href="css/layout.css">
 	<link rel="stylesheet" href="css/home.css">
+	<link rel="stylesheet" href="css/borrowing.css">
 </head>
 
 <body>
