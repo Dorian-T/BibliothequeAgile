@@ -2,6 +2,10 @@
 
 <main id="reservation">
 	<h1>Emprunts en cours</h1>
+
+	<form action="index.php?action=borrowing" method="post">
+		<input type="submit" name="Borrow" value="Nouvel Emprunt">
+	</form>
 	<table>
 		<thead>
 			<tr>
