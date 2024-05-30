@@ -50,10 +50,11 @@ class ReservationController extends Controller
 		} elseif($_SESSION['admin']) {
             $reservations = $this->model->getReservedBooks();
 			if(isset($_POST['valider'])) {
-				$this->model->borrowBook($_POST['customerId'], $_POST['bookId']);
+				$this->model->borrowBook($_POST['bookId'], $_POST['customerId']);
+				$this->model->cancelReservation($_POST['bookId'], $_POST['customerId']);
 				header('Location: index.php?action=reservation');
 			} elseif(isset($_POST['annuler'])) {
-				$this->model->cancelReservation($_POST['customerId'], $_POST['bookId']);
+				$this->model->cancelReservation($_POST['bookId'], $_POST['customerId']);
 				header('Location: index.php?action=reservation');
 			}
             require_once 'view/AdminReservation.php';
