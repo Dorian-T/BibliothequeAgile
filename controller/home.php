@@ -30,12 +30,12 @@ class HomeController extends Controller {
                 $books = $this->model->searchBookByName($title);
             }
 
-            if (empty($books) && !empty($idCategory)) {
-                $books = $this->model->getBooksByCategory($idCategory);
+            if (empty($books) && !empty($selectedCategory)) {
+                $books = $this->model->getBooksByCategory($selectedCategory);
             }
 
-            if (!empty($title) && !empty($idCategory)) {
-                $books = $this->model->searchBookByNameAndCategories($title, $idCategory);
+            if (!empty($title) && !empty($selectedCategory)) {
+                $books = $this->model->searchBookByNameAndCategories($title, $selectedCategory);
             }
 
             if (empty($books)) {

@@ -76,7 +76,7 @@ class Model {
 	 * @return array The list of books that match the name.
 	 */
 	public function searchBookByName(string $nom) {
-		$requete = "SELECT B.title, B.author, B.edition, B.publication_year, C.name AS genre, B.location
+		$requete = "SELECT B.id, B.title, B.author, B.edition, B.publication_year, C.name AS genre, B.location
 			FROM BOOK AS B JOIN CATEGORY AS C ON B.genre = C.id WHERE title LIKE :name";
 		$params = ['name' => '%' . $nom . '%'];
 		return $this->executeRequest($requete, $params);
@@ -89,7 +89,7 @@ class Model {
      * @return array The list of authors.
      */
     public function getBooksByCategory($id) {
-        $requete = "SELECT B.title, B.author, B.edition, B.publication_year, C.name AS genre, B.location
+        $requete = "SELECT B.id, B.title, B.author, B.edition, B.publication_year, C.name AS genre, B.location
 			FROM BOOK AS B JOIN CATEGORY AS C ON B.genre = C.id WHERE genre = :id";
         $params = ['id' => $id];
         return $this->executeRequest($requete, $params);
@@ -119,7 +119,7 @@ class Model {
      * @return array The list of books that match the name.
      */
     public function searchBookByNameAndCategories(string $nom, string $id) {
-        $requete = "SELECT B.title, B.author, B.edition, B.publication_year, C.name AS genre, B.location
+        $requete = "SELECT B.id, B.title, B.author, B.edition, B.publication_year, C.name AS genre, B.location
 			FROM BOOK AS B JOIN CATEGORY AS C ON B.genre = C.id WHERE title LIKE :name AND genre = :id";
         $params = ['name' => '%' . $nom . '%', 'id' => $id];
         return $this->executeRequest($requete, $params);
