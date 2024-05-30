@@ -139,9 +139,9 @@ class Model {
 	 * @param string $adresse The address of the client.
 	 * @return int The id of the new client.
 	 */
-	public function registerClient(string $nom, string $prenom, string $date_naissance, string $telephone, string $email, string $adresse) {
-		$requete = "INSERT INTO customer (last_name, first_name, birth_date, phone, email) VALUES (:nom, :prenom, :date_naissance, :telephone, :email)";
-		$params = ['nom' => $nom, 'prenom' => $prenom, 'date_naissance' => $date_naissance, 'telephone' => $telephone, 'email' => $email];
+	public function registerClient(string $nom, string $prenom, string $date_naissance, string $telephone, string $email, string $password) {
+		$requete = "INSERT INTO customer (last_name, first_name, birth_date, phone, email, password) VALUES (:nom, :prenom, :date_naissance, :telephone, :email, :password)";
+		$params = ['nom' => $nom, 'prenom' => $prenom, 'date_naissance' => $date_naissance, 'telephone' => $telephone, 'email' => $email, 'password' => $password];
 		$this->executeRequest($requete, $params);
 		return self::$db->lastInsertId();
 	}
@@ -355,6 +355,7 @@ class Model {
 	 */
 	public function getUnborrowedBooks() {
 		$requete = "SELECT * FROM book WHERE id NOT IN (SELECT book_id FROM borrowing)";
+		$requete .= " ORDER BY title";
 		return $this->executeRequest($requete);
 	}
 
