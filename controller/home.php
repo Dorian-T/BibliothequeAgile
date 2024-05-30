@@ -1,38 +1,33 @@
 <?php
-
 /**
- * Class HomeController
- *
- * This class represents the controller for the home page.
+ * The HomeController class represents the controller for the home page.
  * It extends the base Controller class.
  */
 class HomeController extends Controller {
 
-	// === Methods ===
-
-	/**
-	 * Renders the home page.
-    */
+    /**
+     * Renders the home page.
+     * 
+     * This method retrieves categories and books data based on user input
+     * and renders the home page view accordingly.
+     * 
+     * @return void
+     */
     public function render() {
         $categories = $this->model->getAllCategories();
+        
         $selectedCategory = '';
+        $books = [];
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $title = isset($_POST['book_name']) ? trim($_POST['book_name']) : '';
             $selectedCategory = isset($_POST['categorie-select']) ? $_POST['categorie-select'] : '';
 
-            // Search for books by name
-            if (!empty($title)) {
+            // On traite les différents cas de recherche
+            if (!empty($title) && !empty($selectedCategory)) {
+                $books = $this->model->searchBookByTitleAndCategory($title, $selectedCategory);
+            } elseif (!empty($title)) {
                 $books = $this->model->searchBookByName($title);
-            }
-            
-            // Search for books by category
-            if (empty($books) && !empty($idCategory)) {
-                $books = $this->model->getBooksByCategory($idCategory);
-            }
-
-            // If no search criteria, get all books
-            if (empty($books)) {
             } elseif (!empty($selectedCategory)) {
                 $books = $this->model->getBooksByCategory($selectedCategory);
             } else {

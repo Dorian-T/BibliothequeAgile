@@ -93,6 +93,13 @@ class Model {
         return $this->executeRequest($requete, $params);
     }
 
+	public function searchBookByTitleAndCategory(string $title, string $categoryID) {
+		$requete = "SELECT * FROM BOOK WHERE title LIKE :name AND genre = :category";
+		$params = ['name' => '%' . $title . '%', 'category' => $categoryID];
+		return $this->executeRequest($requete, $params);
+	}
+	
+
     /**
      * Get all categories from the database.
      * 
