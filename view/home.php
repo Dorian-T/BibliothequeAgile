@@ -41,7 +41,7 @@
 					<td><?= $book['publication_year'] ?></td>
 					<td><?= $book['genre'] ?></td>
 					<td><?= $book['location'] ?></td>
-                    <td><button><a href="index.php?action=reservation&id"=<?= $book['id'] ?>>réserver</a></button></td>
+                    <td><button><a href="index.php?action=reservation&id=<?= $book['id'] ?>">réserver</a></button></td>
 				</tr>
 			<?php endforeach; ?>
 		</tbody>

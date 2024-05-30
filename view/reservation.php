@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 
 <main id="reservation">
-	<form action="index.php?action=reservation" method="post">
+	<form action="index.php?action=reservation&id=<?= $bookId ?>" method="post">
 		<input type="email" name="email" placeholder="Email@example.com">
         <input type="text" name="firstname" placeholder="Prénom">
 		<input type="text" name="lastname" placeholder="Nom">
