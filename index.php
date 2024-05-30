@@ -29,7 +29,8 @@ if(isset($_GET['action'])) {
 
 		case 'reservation':
 			$controller = new ReservationController();
-			$controller->setId($_GET['id'] ?? null);
+			if(isset($_GET['id']))
+				$controller->setId($_GET['id']);
 			$controller->render();
 			break;
 

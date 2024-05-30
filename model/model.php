@@ -76,7 +76,7 @@ class Model {
 	 * @return array The list of books that match the name.
 	 */
 	public function searchBookByName(string $nom) {
-		$requete = "SELECT B.title, B.author, B.edition, B.publication_year, C.name AS genre, B.location
+		$requete = "SELECT B.id, B.title, B.author, B.edition, B.publication_year, C.name AS genre, B.location
 			FROM BOOK AS B JOIN CATEGORY AS C ON B.genre = C.id WHERE title LIKE :name";
 		$params = ['name' => '%' . $nom . '%'];
 		return $this->executeRequest($requete, $params);
@@ -89,7 +89,7 @@ class Model {
      * @return array The list of authors.
      */
     public function getBooksByCategory($id) {
-        $requete = "SELECT B.title, B.author, B.edition, B.publication_year, C.name AS genre, B.location
+        $requete = "SELECT B.id, B.title, B.author, B.edition, B.publication_year, C.name AS genre, B.location
 			FROM BOOK AS B JOIN CATEGORY AS C ON B.genre = C.id WHERE genre = :id";
         $params = ['id' => $id];
         return $this->executeRequest($requete, $params);
@@ -119,7 +119,7 @@ class Model {
      * @return array The list of books that match the name.
      */
     public function searchBookByNameAndCategories(string $nom, string $id) {
-        $requete = "SELECT B.title, B.author, B.edition, B.publication_year, C.name AS genre, B.location
+        $requete = "SELECT B.id, B.title, B.author, B.edition, B.publication_year, C.name AS genre, B.location
 			FROM BOOK AS B JOIN CATEGORY AS C ON B.genre = C.id WHERE title LIKE :name AND genre = :id";
         $params = ['name' => '%' . $nom . '%', 'id' => $id];
         return $this->executeRequest($requete, $params);
@@ -139,9 +139,9 @@ class Model {
 	 * @param string $adresse The address of the client.
 	 * @return int The id of the new client.
 	 */
-	public function registerClient(string $nom, string $prenom, string $date_naissance, string $telephone, string $email, string $adresse) {
-		$requete = "INSERT INTO customer (last_name, first_name, birth_date, phone, email) VALUES (:nom, :prenom, :date_naissance, :telephone, :email)";
-		$params = ['nom' => $nom, 'prenom' => $prenom, 'date_naissance' => $date_naissance, 'telephone' => $telephone, 'email' => $email];
+	public function registerClient(string $nom, string $prenom, string $date_naissance, string $telephone, string $email, string $password) {
+		$requete = "INSERT INTO customer (last_name, first_name, birth_date, phone, email, password) VALUES (:nom, :prenom, :date_naissance, :telephone, :email, :password)";
+		$params = ['nom' => $nom, 'prenom' => $prenom, 'date_naissance' => $date_naissance, 'telephone' => $telephone, 'email' => $email, 'password' => $password];
 		$this->executeRequest($requete, $params);
 		return self::$db->lastInsertId();
 	}
@@ -196,13 +196,12 @@ class Model {
 		return $this->executeRequest($sql, $params);
 	}
 
-	public function getReservedBooks($customer_id) {
+	public function getReservedBooks() {
 		$sql = "SELECT B.id AS book_id, B.title, B.author, C.id AS customer_id, C.first_name, C.last_name
 				FROM BOOK AS B
-					JOIN Reservation AS R ON B.id = R.book_id WHERE R.customer_id = :customer_id
+					JOIN Reservation AS R ON B.id = R.book_id
 					JOIN Customer AS C ON R.customer_id = C.id";
-		$params = ['customer_id' => $customer_id];
-		return $this->executeRequest($sql, $params);
+		return $this->executeRequest($sql);
 	}
 
 	/**
@@ -355,6 +354,7 @@ class Model {
 	 */
 	public function getUnborrowedBooks() {
 		$requete = "SELECT * FROM book WHERE id NOT IN (SELECT book_id FROM borrowing)";
+		$requete .= " ORDER BY title";
 		return $this->executeRequest($requete);
 	}
 
