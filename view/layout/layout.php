@@ -16,6 +16,7 @@
 			<ul>
 				<li><a href="./">Accueil</a></li>
 				<li><a href="index.php?action=register">Inscription</a></li>
+				<li><a href="index.php?action=borrowing">Emprunter</a></li>
 			</ul>
 		</nav>
 	</header>
