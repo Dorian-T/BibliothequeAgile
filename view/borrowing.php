@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-<main id="reservation">
+<main id="borrowing">
 	<h1>Emprunts en cours</h1>
 	<table>
 		<thead>
