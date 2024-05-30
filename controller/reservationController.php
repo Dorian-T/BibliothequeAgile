@@ -10,7 +10,12 @@ class ReservationController extends Controller
 {
 
 	// === Methods ===
+	public function setId($id)
+	{
+		$this->id = $id;
+	}
 
+	
 	/**
 	 * Renders the home page.
 	 */
@@ -23,6 +28,7 @@ class ReservationController extends Controller
 				//isset($_POST['email'])
 				//isset($_POST['firstname'])
 				//isset($_POST['lastname'])
+				//$this->id
 			}
 		} else {
 			//retourner sur home
@@ -31,9 +37,6 @@ class ReservationController extends Controller
 		require_once 'view/reservation.php';
 	}
 
-	public function setId($id)
-	{
-		$this->id = $id;
-	}
+	
 
 }
