@@ -23,14 +23,17 @@ class HomeController extends Controller {
 
             $books = [];
 
+            // Search for books by name
             if (!empty($title)) {
                 $books = $this->model->searchBookByName($title);
             }
-
+            
+            // Search for books by category
             if (empty($books) && !empty($idCategory)) {
                 $books = $this->model->getBooksByCategory($idCategory);
             }
 
+            // If no search criteria, get all books
             if (empty($books)) {
                 $books = $this->model->getAllBooks();
             }
