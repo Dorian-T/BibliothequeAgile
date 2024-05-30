@@ -1,5 +1,3 @@
--- Test data for the ... table
-
 INSERT INTO Category(id, name) VALUES
     (1, 'Litterature'),
     (2, 'Jeunesse'),

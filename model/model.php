@@ -151,29 +151,59 @@ class Model {
 		return ($this->executeRequest($requete, $params))[0];
 	}
 
+	/**
+	 * Get all clients from the database.
+	 * 
+	 * @return array The list of clients.
+	 */
 	public function getClients() {
 		$requete = "SELECT * FROM customer";
 		return $this->executeRequest($requete);
 	}
 
 	/** 			------------------------               BORROWING SECTION                  ------------------------                              */
+
+	/**
+	 * Get all borrowings from the database.
+	 * 
+	 * @return array The list of borrowings.
+	 */
 	public function getAllBorrowingsID() {
 		$requete = "SELECT * FROM borrowing";
 		return $this->executeRequest($requete);
 	}
 
+	/**
+	 * Get all borrowings from a client by ID.
+	 * 
+	 * @param int $id The id of the client.
+	 * @return array The list of borrowings.
+	 */
 	public function getClientBorrowingsID($id) {
 		$requete = "SELECT * FROM borrowing WHERE customer_id = :id";
 		$params = ['id' => $id];
 		return $this->executeRequest($requete, $params);
 	}
 
+	/**
+	 * Get all borrowings for a book by ID.
+	 * 
+	 * @param int $id The id of the book.
+	 * @return array The list of borrowings.
+	 */
 	public function getBookBorrowingsID($id) {
 		$requete = "SELECT * FROM borrowing WHERE book_id = :id";
 		$params = ['id' => $id];
 		return $this->executeRequest($requete, $params);
 	}
 
+	/**
+	 * Aggregates the info from a client and a book.
+	 * 
+	 * @param int $bookID The id of the book.
+	 * @param int $ClientID The id of the client.
+	 * @return array The client and book info.
+	 */
 	public function convertBorrowingID($bookID,$ClientID) {
 		$requete = "SELECT * FROM customer WHERE id = :ClientID";
 		$params = ['ClientID' => $ClientID];
@@ -185,6 +215,13 @@ class Model {
 		$book["BookID"] = $bookID;
 		return $client + $book;
 	}
+
+	/**
+	 * Converts a list of borrowings.
+	 * 
+	 * @param array $borrowings The list of borrowings.
+	 * @return array The list of converted borrowings.
+	 */
 	public function convertBorrowings($borrowings) {
 		$converted = [];
 		foreach ($borrowings as $borrowing) {
@@ -193,30 +230,59 @@ class Model {
 		return $converted;
 	}
 
+	/**
+	 * Get a borrowing by client and book ID.
+	 * 
+	 * @param int $ClientID The id of the client.
+	 * @param int $bookID The id of the book.
+	 * @return array The borrowing.
+	 */
 	public function getBorrowing($ClientID,$bookID) {
 		$requete = "SELECT * FROM borrowing WHERE customer_id = :ClientID AND book_id = :bookID";
 		$params = ['ClientID' => $ClientID, 'bookID' => $bookID];
 		return ($this->executeRequest($requete, $params))[0];
 	}
 
+	/**
+	 * Get all borrowings from the database.
+	 * 
+	 * @return array The list of borrowings.
+	 */
 	public function getBorrowings() {
 		$requete = "SELECT * FROM borrowing";
 		$rslt = $this->executeRequest($requete);
 		return $this->convertBorrowings($rslt);
 	}
 
+	/**
+	 * Deletes a borrowing from the database.
+	 * 
+	 * @param int $ClientID The id of the client.
+	 * @param int $bookID The id of the book.
+	 */
 	public function deleteBorrow($ClientID,$bookID) {
 		$requete = "DELETE FROM borrowing WHERE customer_id = :ClientID AND book_id = :bookID";
 		$params = ['ClientID' => $ClientID, 'bookID' => $bookID];
 		$this->executeRequest($requete, $params);
 	}
 
+	/**
+	 * Adds a new borrowing to the database.
+	 * 
+	 * @param int $ClientID The id of the client.
+	 * @param int $bookID The id of the book.
+	 */
 	public function newBorrow($ClientID,$bookID) {
 		$requete = "INSERT INTO borrowing (customer_id, book_id) VALUES (:ClientID, :bookID)";
 		$params = ['ClientID' => $ClientID, 'bookID' => $bookID];
 		$this->executeRequest($requete, $params);
 	}
 
+	/**
+	 * Get all unborrowed books from the database.
+	 * 
+	 * @return array The list of unborrowed books.
+	 */
 	public function getUnborrowedBooks() {
 		$requete = "SELECT * FROM book WHERE id NOT IN (SELECT book_id FROM borrowing)";
 		return $this->executeRequest($requete);
