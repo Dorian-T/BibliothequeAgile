@@ -6,30 +6,26 @@
 	<h2>Formulaire d'inscription</h2>
 	<form action="index.php?action=register" method="post">
 		<div>
-			<label for="nom">Nom</label>
+			<label for="nom">Nom : </label>
 			<input type="text" id="nom" name="nom" required>
 		</div>
 		<div>
-			<label for="prenom">Prénom</label>
+			<label for="prenom">Prénom : </label>
 			<input type="text" id="prenom" name="prenom" required>
 		</div>
 		<div>
-			<label for="date_naissance">Date de naissance</label>
+			<label for="date_naissance">Date de naissance : </label>
 			<input type="date" id="date_naissance" name="date_naissance" required>
 		</div>
 		<div>
-			<label for="telephone">Téléphone</label>
+			<label for="telephone">Téléphone : </label>
 			<input type="tel" id="telephone" name="telephone" required>
 		</div>
 		<div>
-			<label for="email">Adresse email</label>
+			<label for="email">Adresse email : </label>
 			<input type="email" id="email" name="email" required>
 		</div>
-		<div>
-			<label for="adresse">Adresse</label>
-			<input type="text" id="adresse" name="adresse" required>
-		</div>
-		
+		<br>
 		<div>
 			<label for="valider">Valider</label>
 			<input type="submit" id="valider" name="valider">

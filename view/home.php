@@ -15,11 +15,11 @@
             <?php endforeach; ?>
         </select>
 
-        <label for="book_name">Nom du Livre:</label>
+        <label for="book_name">Nom du livre:</label>
         <input type="text" id="book_name" name="book_name">
         <button type="submit">Rechercher</button>
     </form>
-
+	<br>
 	<table>
 		<thead>
 			<tr>
