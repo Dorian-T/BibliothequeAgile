@@ -161,5 +161,13 @@ class Model {
 		$params = ['book_id' => $book_id, 'customer_id' => $customer_id];
 		return $this->executeRequest($sql, $params);
 	}
-	
+
+	public function getReservedBooks($customer_id) {
+		$sql = "SELECT B.id AS book_id, B.title, B.author, C.id AS customer_id, C.first_name, C.last_name
+				FROM BOOK AS B
+					JOIN Reservation AS R ON B.id = R.book_id WHERE R.customer_id = :customer_id
+					JOIN Customer AS C ON R.customer_id = C.id";
+		$params = ['customer_id' => $customer_id];
+		return $this->executeRequest($sql, $params);
+	}
 }
