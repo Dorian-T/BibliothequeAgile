@@ -10,6 +10,11 @@ class ReservationController extends Controller
 {
 	private int $bookId;
 
+	public function __construct() {
+		parent::__construct();
+		$this->bookId = -1;
+	}
+
 	// === Methods ===
 	public function setId($id)
 	{
@@ -26,7 +31,7 @@ class ReservationController extends Controller
 	 */
 	public function render()
 	{
-		if ($this->bookId != null) {
+		if ($this->bookId != -1) {
 			$bookId = $this->bookId;
 			if (isset($_POST['submit'])) {
 				// if get customer == null alors créer
