@@ -5,6 +5,8 @@
 		<input type="email" name="email" placeholder="email@example.com" required>
         <input type="text" name="firstname" placeholder="Prénom" required>
 		<input type="text" name="lastname" placeholder="Nom" required>
+		<input type="date" name="birthdate" placeholder="Date de naissance" required>
+		<input type="phone" name="phone" placeholder="Numéro de téléphone" required>
 		<input type="submit" name="submit" value="Réserver">
     </form>
 </main>
