@@ -11,6 +11,8 @@ require_once 'controller/home.php';
 require_once 'controller/registerController.php';
 require_once 'controller/borrowingController.php';
 require_once 'controller/adminLoginController.php';
+require_once 'controller/reservationController.php';
+
 
 // Rooter
 if(isset($_GET['action'])) {
@@ -22,6 +24,12 @@ if(isset($_GET['action'])) {
 			
 		case 'register':
 			$controller = new RegisterController();
+			$controller->render();
+			break;
+
+		case 'reservation':
+			$controller = new ReservationController();
+			$controller->setId($_GET['id'] ?? 69);
 			$controller->render();
 			break;
 

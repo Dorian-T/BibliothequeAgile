@@ -28,9 +28,17 @@ class HomeController extends Controller {
                 $books = $this->model->searchBookByTitleAndCategory($title, $selectedCategory);
             } elseif (!empty($title)) {
                 $books = $this->model->searchBookByName($title);
-            } elseif (!empty($selectedCategory)) {
-                $books = $this->model->getBooksByCategory($selectedCategory);
-            } else {
+            }
+
+            if (empty($books) && !empty($idCategory)) {
+                $books = $this->model->getBooksByCategory($idCategory);
+            }
+
+            if (!empty($title) && !empty($idCategory)) {
+                $books = $this->model->searchBookByNameAndCategories($title, $idCategory);
+            }
+
+            if (empty($books)) {
                 $books = $this->model->getAllBooks();
             }
         } else {

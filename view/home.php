@@ -32,6 +32,7 @@
 					<th>Genre</th>
 				<?php endif; ?>
 				<th>Emplacement</th>
+                <th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -45,6 +46,7 @@
 						<td><?= $book['genre'] ?></td>
 					<?php endif; ?>
 					<td><?= $book['location'] ?></td>
+                    <td><button><a href="index.php?action=reservation&id=<?= $book['id'] ?>">réserver</a></button></td>
 				</tr>
 			<?php endforeach; ?>
 		</tbody>

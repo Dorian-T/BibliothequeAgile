@@ -50,7 +50,7 @@ class Model {
 	 */
 	public function getAllBooks() {
 		$requete = "
-			SELECT B.title, B.author, B.edition, B.publication_year, C.name AS genre, B.location
+			SELECT B.id, B.title, B.author, B.edition, B.publication_year, C.name AS genre, B.location
 			FROM BOOK AS B JOIN CATEGORY AS C ON B.genre = C.id
 			ORDER BY genre, author, title;
 		";
@@ -76,7 +76,8 @@ class Model {
 	 * @return array The list of books that match the name.
 	 */
 	public function searchBookByName(string $nom) {
-		$requete = "SELECT * FROM BOOK WHERE title LIKE :name";
+		$requete = "SELECT B.title, B.author, B.edition, B.publication_year, C.name AS genre, B.location
+			FROM BOOK AS B JOIN CATEGORY AS C ON B.genre = C.id WHERE title LIKE :name";
 		$params = ['name' => '%' . $nom . '%'];
 		return $this->executeRequest($requete, $params);
 	}
@@ -88,7 +89,8 @@ class Model {
      * @return array The list of authors.
      */
     public function getBooksByCategory($id) {
-        $requete = "SELECT * FROM BOOK WHERE genre = :id";
+        $requete = "SELECT B.title, B.author, B.edition, B.publication_year, C.name AS genre, B.location
+			FROM BOOK AS B JOIN CATEGORY AS C ON B.genre = C.id WHERE genre = :id";
         $params = ['id' => $id];
         return $this->executeRequest($requete, $params);
     }
@@ -109,6 +111,20 @@ class Model {
         $requete = "SELECT * FROM CATEGORY";
         return $this->executeRequest($requete);
     }
+
+    /**
+     * Search for a book by name and categories.
+     *
+     * @param string $nom The name of the book.
+     * @return array The list of books that match the name.
+     */
+    public function searchBookByNameAndCategories(string $nom, string $id) {
+        $requete = "SELECT B.title, B.author, B.edition, B.publication_year, C.name AS genre, B.location
+			FROM BOOK AS B JOIN CATEGORY AS C ON B.genre = C.id WHERE title LIKE :name AND genre = :id";
+        $params = ['name' => '%' . $nom . '%', 'id' => $id];
+        return $this->executeRequest($requete, $params);
+    }
+
 
 	/**              ------------------------               CLIENT SECTION                  ------------------------                              */
 
@@ -166,6 +182,53 @@ class Model {
 	public function getClients() {
 		$requete = "SELECT * FROM customer";
 		return $this->executeRequest($requete);
+	}
+
+	function getCustomerId($email){
+		$requete = "SELECT id FROM customer WHERE email=:customer_email";
+		$params = ['customer_email' => $email];
+		return $this->executeRequest($requete, $params);
+	}
+
+	function borrowBook($book_id, $customer_id) { // on verra ça au moment du merge
+		$sql = "INSERT INTO Borrowing (book_id, customer_id) VALUES (:book_id, :customer_id)";
+		$params = ['book_id' => $book_id, 'customer_id' => $customer_id];
+		return $this->executeRequest($sql, $params);
+	}
+
+	public function getReservedBooks($customer_id) {
+		$sql = "SELECT B.id AS book_id, B.title, B.author, C.id AS customer_id, C.first_name, C.last_name
+				FROM BOOK AS B
+					JOIN Reservation AS R ON B.id = R.book_id WHERE R.customer_id = :customer_id
+					JOIN Customer AS C ON R.customer_id = C.id";
+		$params = ['customer_id' => $customer_id];
+		return $this->executeRequest($sql, $params);
+	}
+
+	/**
+	 * Reserve a book for a customer.
+	 *
+	 * @param int $book_id The ID of the book to reserve.
+	 * @param int $customer_id The ID of the customer reserving the book.
+	 */
+	public function reserveBook($book_id, $customer_id) {
+		$sql = "INSERT INTO Reservation (book_id, customer_id) VALUES (:book_id, :customer_id)";
+		$params = ['book_id' => $book_id, 'customer_id' => $customer_id];
+		$this->executeRequest($sql, $params);
+	}
+
+	/**
+	 * Cancel a reservation.
+	 *
+	 * @param int $book_id The ID of the book to cancel the reservation for.
+	 * @param int $customer_id The ID of the customer who reserved the book.
+	 */
+	public function cancelReservation($book_id, $customer_id) {
+		$sql = "DELETE
+				FROM Reservation
+				WHERE book_id = :book_id AND customer_id = :customer_id";
+		$params = ['book_id' => $book_id, 'customer_id' => $customer_id];
+		$this->executeRequest($sql, $params);
 	}
 
 	/** 			------------------------               BORROWING SECTION                  ------------------------                              */
