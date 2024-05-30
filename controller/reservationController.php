@@ -8,11 +8,11 @@
  */
 class ReservationController extends Controller
 {
-	private int $id;
+	private int $bookId;
 	// === Methods ===
 	public function setId($id)
 	{
-		$this->id = $id;
+		$this->bookId = $id;
 	}
 
 
@@ -22,7 +22,7 @@ class ReservationController extends Controller
 	public function render()
 	{
 
-		if ($this->id != null) {
+		if ($this->bookId != null) {
 			if (isset($_POST['submit'])) {
 				//$books = $this->model->getAllBooks();
 				//isset($_POST['email'])
@@ -30,6 +30,18 @@ class ReservationController extends Controller
 				//isset($_POST['lastname'])
 				//$this->id
 				
+				//tester si la personne est deja créée
+
+				echo("Voici les champs récuérés:" . $_POST['email'] . " " . $_POST['firstname'] . " " . $_POST['lastname']);
+				echo("Voici l'id:" . $this->bookId);
+				$customerId = $this->model->getCustomerId($_POST['email']);
+				echo('$customerId'. $customerId);
+				
+				if($customerId == null){
+					$customerId = $this->model->registerClient($_POST['lastname'], $_POST['firstname'], "datedenaissance", "tel", $_POST['email'], "adresse");
+				}
+				echo('$customerId'. $customerId);
+				$this->model->reserveBook($this->bookId, $customerId);
 			}
 		} else {
 			//retourner sur home
