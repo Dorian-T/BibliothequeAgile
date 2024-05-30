@@ -46,7 +46,7 @@
 						<td><?= $book['genre'] ?></td>
 					<?php endif; ?>
 					<td><?= $book['location'] ?></td>
-                    <td><button><a href="index.php?action=reservation&id=<?= $book['id'] ?>">réserver</a></button></td>
+                    <td><a href="index.php?action=reservation&id=<?= $book['id'] ?>">réserver</a></td>
 				</tr>
 			<?php endforeach; ?>
 		</tbody>
