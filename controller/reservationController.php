@@ -8,14 +8,14 @@
  */
 class ReservationController extends Controller
 {
-
+	private int $id;
 	// === Methods ===
 	public function setId($id)
 	{
 		$this->id = $id;
 	}
 
-	
+
 	/**
 	 * Renders the home page.
 	 */
@@ -29,6 +29,7 @@ class ReservationController extends Controller
 				//isset($_POST['firstname'])
 				//isset($_POST['lastname'])
 				//$this->id
+				
 			}
 		} else {
 			//retourner sur home
