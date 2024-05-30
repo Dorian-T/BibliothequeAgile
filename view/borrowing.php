@@ -4,8 +4,9 @@
 	<h1>Emprunts en cours</h1>
 
 	<form action="index.php?action=borrowing" method="post">
-		<input type="submit" name="Borrow" value="Nouvel Emprunt">
+		<input type="submit" name="Borrow" value="Nouvel emprunt">
 	</form>
+	<br>
 	<table>
 		<thead>
 			<tr>
