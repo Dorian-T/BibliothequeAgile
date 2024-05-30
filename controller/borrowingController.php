@@ -11,8 +11,15 @@ class BorrowingController extends Controller {
 			
 		
 		if (isset ($_POST["Borrow"])) {
+			if (isset($_POST['ClientID']) && isset($_POST['BookID'])) {
+				$idClient = $_POST['ClientID'];
+				$idBook = $_POST['BookID'];
+				$this->model->newBorrow($idClient, $idBook);
+				//redirect to borrowing page
+				header('Location: index.php?action=borrowing');
+			}
 			$clients = $this->model->getClients();
-			$books = $this->model->getAllBooks();
+			$books = $this->model->getUnborrowedBooks();
 			require_once 'view/borrowingForm.php';
 	
 		}

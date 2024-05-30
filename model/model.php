@@ -197,9 +197,15 @@ class Model {
 	}
 
 	public function newBorrow($ClientID,$bookID) {
+
 		$requete = "INSERT INTO borrowing (customer_id, book_id) VALUES (:ClientID, :bookID)";
 		$params = ['ClientID' => $ClientID, 'bookID' => $bookID];
 		$this->executeRequest($requete, $params);
+	}
+
+	public function getUnborrowedBooks() {
+		$requete = "SELECT * FROM book WHERE id NOT IN (SELECT book_id FROM borrowing)";
+		return $this->executeRequest($requete);
 	}
 
 }

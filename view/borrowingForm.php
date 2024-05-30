@@ -6,14 +6,14 @@
 		<label for="ClientID">Emprunteur</label>
 		<select name="ClientID" id="ClientID">
 			<?php foreach ($clients as $client):
-				echo "<option value=\"<?".$client['id']."\">".$client['first_name']." ".$client['last_name']."</option>";
+				echo "<option value=\"".$client['id']."\">".$client['first_name']." ".$client['last_name']."</option>";
 			endforeach; ?>
 		</select>
 		<br>
 		<label for="BookID">Livre</label>
 		<select name="BookID" id="BookID">
 			<?php foreach ($books as $book):
-				echo "<option value=\"<?".$book['id']."\">".$book['title']." ".$book['author']."</option>";
+				echo "<option value=\"".$book['id']."\">".$book['title']." ".$book['author']."</option>";
 			endforeach; ?>
 		</select>
 		<br>
