@@ -140,7 +140,7 @@ class Model {
 	 * @return int The id of the new client.
 	 */
 	public function registerClient(string $nom, string $prenom, string $date_naissance, string $telephone, string $email) {
-		$requete = "INSERT INTO customer (last_name, first_name, birth_date, phone, email, password) VALUES (:nom, :prenom, :date_naissance, :telephone, :email, :password)";
+		$requete = "INSERT INTO customer (last_name, first_name, birth_date, phone, email, password, is_admin) VALUES (:nom, :prenom, :date_naissance, :telephone, :email, :password, 0)";
 		$params = ['nom' => $nom, 'prenom' => $prenom, 'date_naissance' => $date_naissance, 'telephone' => $telephone, 'email' => $email, 'password' => "None"];
 		$this->executeRequest($requete, $params);
 		return self::$db->lastInsertId();
