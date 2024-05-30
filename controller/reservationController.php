@@ -38,7 +38,7 @@ class ReservationController extends Controller
 				$customerId = $this->model->getCustomerId($_POST['email']);
 
 				if($customerId == null){
-					$customerId = $this->model->registerClient($_POST['lastname'], $_POST['firstname'], "datedenaissance", "tel", $_POST['email'], "adresse");
+					$customerId = $this->model->registerClient($_POST['lastname'], $_POST['firstname'], $_POST['birthdate'], $_POST['phone'], $_POST['email'], "adresse");
 				}else{
 					$customerId = $customerId[0]['id'];
 				}
