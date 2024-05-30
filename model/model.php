@@ -212,7 +212,6 @@ class Model {
 	}
 
 	public function newBorrow($ClientID,$bookID) {
-
 		$requete = "INSERT INTO borrowing (customer_id, book_id) VALUES (:ClientID, :bookID)";
 		$params = ['ClientID' => $ClientID, 'bookID' => $bookID];
 		$this->executeRequest($requete, $params);
