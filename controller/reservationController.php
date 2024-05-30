@@ -34,6 +34,8 @@ class ReservationController extends Controller
 
 				if($customerId == null){
 					$customerId = $this->model->registerClient($_POST['lastname'], $_POST['firstname'], "datedenaissance", "tel", $_POST['email'], "adresse");
+				}else{
+					$customerId = $customerId[0]['id'];
 				}
 
 				$this->model->reserveBook($this->bookId, $customerId);
