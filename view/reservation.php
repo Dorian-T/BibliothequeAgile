@@ -5,7 +5,7 @@
 		<input type="email" name="email" placeholder="Email@example.com">
         <input type="text" name="firstname" placeholder="Prénom">
 		<input type="text" name="lastname" placeholder="Nom">
-		<input type="number" name="bookid" value=$id ><!-- hidden -->
+		<input type="submit" name="submit" value="Réserver">
     </form>
 </main>
 
