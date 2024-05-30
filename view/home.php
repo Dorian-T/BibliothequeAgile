@@ -28,7 +28,9 @@
 				<th>Auteur</th>
 				<th>Edition</th>
 				<th>Année de parution</th>
-				<th>Genre</th>
+				<?php if (empty($selectedCategory)) : ?>
+					<th>Genre</th>
+				<?php endif; ?>
 				<th>Emplacement</th>
 			</tr>
 		</thead>
@@ -39,7 +41,9 @@
 					<td><?= $book['author'] ?></td>
 					<td><?= $book['edition'] ?></td>
 					<td><?= $book['publication_year'] ?></td>
-					<td><?= $book['genre'] ?></td>
+					<?php if (empty($selectedCategory)) : ?>
+						<td><?= $book['genre'] ?></td>
+					<?php endif; ?>
 					<td><?= $book['location'] ?></td>
 				</tr>
 			<?php endforeach; ?>
