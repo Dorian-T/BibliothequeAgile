@@ -123,6 +123,21 @@ class Model {
 		return self::$db->lastInsertId();
 	}
 
+	public function connexionAdmin($email, $password) {
+		// Préparer et exécuter la requête SQL pour vérifier les informations d'identification
+		$sql = "SELECT * FROM Customer WHERE email = :email AND password = :password AND is_admin = 1";
+		$params = ['email' => $email, 'password' => $password];
+		$result = $this->executeRequest($sql, $params);
+	
+		// Vérifier si un administrateur a été trouvé
+		if (count($result) > 0) {
+			return $result[0]; // Retourne les informations de l'administrateur
+		} else {
+			return false; // Aucune correspondance trouvée
+		}
+	}
+	
+
 	/**
 	 * Search for a client by ID
 	 * 

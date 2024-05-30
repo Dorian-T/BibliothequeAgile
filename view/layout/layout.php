@@ -16,7 +16,11 @@
 			<ul>
 				<li><a href="./">Accueil</a></li>
 				<li><a href="index.php?action=register">Inscription</a></li>
-				<li><a href="index.php?action=borrowing">Emprunter</a></li>
+				<?php if (!isset($_SESSION['admin'])): ?>
+					<li><a href="index.php?action=adminlogin">Connexion Admin</a></li>
+				<?php else: ?>
+					<li><a href="index.php?action=borrowing">Réservation</a></li>
+				<?php endif; ?>
 			</ul>
 		</nav>
 	</header>
