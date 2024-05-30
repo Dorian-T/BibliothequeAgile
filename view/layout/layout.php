@@ -20,6 +20,7 @@
 					<li><a href="index.php?action=adminlogin">Connexion Admin</a></li>
 				<?php else: ?>
 					<li><a href="index.php?action=borrowing">Emprunt</a></li>
+					<li><a href="index.php?action=adminlogout">Deconnexion</a></li>
 				<?php endif; ?>
 			</ul>
 		</nav>

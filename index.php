@@ -11,7 +11,7 @@ require_once 'controller/home.php';
 require_once 'controller/registerController.php';
 require_once 'controller/borrowingController.php';
 require_once 'controller/adminLoginController.php';
-
+require_once 'controller/adminLogoutController.php';
 
 // Rooter
 if(isset($_GET['action'])) {
@@ -26,19 +26,29 @@ if(isset($_GET['action'])) {
 			$controller->render();
 			break;
 
-			case 'borrowing':
-				if (!isset($_SESSION['admin'])) {
-					// Redirige vers la page de connexion admin si pas connecté
-					header('Location: index.php?action=adminlogin');
-					exit();
-				}
-				$controller = new BorrowingController();
+		case 'borrowing':
+			if (!isset($_SESSION['admin'])) {
+				// Redirige vers la page de connexion admin si pas connecté
+				header('Location: index.php?action=adminlogin');
+				exit();
+			}
+			$controller = new BorrowingController();
+			$controller->render();
+			break;
+
+			case 'adminlogin':
+				$controller = new AdminLoginController();
 				$controller->render();
 				break;
 
-		case 'adminlogin':
-			$controller = new AdminLoginController();
-			$controller->render();
+			case 'adminlogout':
+			if (!isset($_SESSION['admin'])) {
+				// Redirige vers la page de connexion admin si pas connecté
+				header('Location: ./');
+				exit();
+			}
+			$controller = new AdminLogoutController();
+			$controller->logout();
 			break;
 
 		default:
